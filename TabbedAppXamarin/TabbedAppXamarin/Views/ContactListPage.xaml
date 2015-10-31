@@ -1,6 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TabbedAppXamarin.Views.ContactListPage">
-  <Label Text="Hello contact List" VerticalOptions="Center" HorizontalOptions="Center" />
+             x:Class="TabbedAppXamarin.Views.ContactListPage"
+             Title="Contacts list">
+  
+  <StackLayout>
+    <SearchBar Placeholder="Search" Text="{Binding Text}" SearchCommand="{Binding SearchContactCommand}"/>
+    <ListView ItemsSource="{Binding GroupContactsList}" ItemSelected="OnSelected">>
+      <!--GroupDisplayBinding="{Binding Suffix}"
+      GroupShortNameBinding="{Binding Suffix}"
+      IsGroupingEnabled="true">--> 
+      <!---->
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <!--<ViewCell.ContextActions>
+            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+          </ViewCell.ContextActions>-->
+            <Grid Padding="20, 0, 0, 0">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <Label Grid.Row="0" Grid.Column="0" Text="{Binding FirstName}" VerticalOptions="Center"/>
+              <Label Grid.Row="0" Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center" />
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
 </ContentPage>
