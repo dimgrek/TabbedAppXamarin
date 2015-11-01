@@ -14,15 +14,19 @@
         </behaviors:BehaviorCollection>
       </behaviors:Interaction.Behaviors>
     </SearchBar>
-    <ListView ItemsSource="{Binding FilteredContacts}" IsGroupingEnabled="true" GroupDisplayBinding="{Binding Key}" GroupShortNameBinding="{Binding Key}">
+    <ListView ItemsSource="{Binding FilteredContacts}" 
+              IsGroupingEnabled="true" 
+              GroupDisplayBinding="{Binding Key}" 
+              GroupShortNameBinding="{Binding Key}" 
+              ItemSelected="OnSelected">
       <ListView.ItemTemplate>
         <DataTemplate>
           <TextCell Text="{Binding Name}" TextColor="Black">
-            <behaviors:Interaction.Behaviors>
+            <!--behaviors:Interaction.Behaviors>
               <behaviors:BehaviorCollection>
                 <behaviors:EventToCommand EventName="Tapped" Command="{Binding ContactSelectedCommand}" CommandParameter="{Binding}"/>
               </behaviors:BehaviorCollection>
-            </behaviors:Interaction.Behaviors>
+            </behaviors:Interaction.Behaviors>-->
           </TextCell>
         </DataTemplate>
       </ListView.ItemTemplate>

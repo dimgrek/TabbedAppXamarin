@@ -23,7 +23,7 @@ namespace TabbedAppXamarin.Views
 
         async void OnItemSelected(object sender, ContactListViewModel.ItemSelectedEventArgs e)
         {
-            await Navigation.PushAsync(new ContactViewPage(e.Id));
+            await Navigation.PushAsync(new ContactViewPage(e.cvm));
         }
     }
 }

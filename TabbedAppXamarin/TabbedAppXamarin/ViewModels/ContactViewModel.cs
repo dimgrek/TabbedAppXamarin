@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using Contacts.Plugin.Abstractions;
 
 namespace TabbedAppXamarin.ViewModels
@@ -11,6 +11,7 @@ namespace TabbedAppXamarin.ViewModels
         public ContactViewModel(Contact contact)
         {
             _contact = contact;
+            
         }
 
         public string Forename { get { return _contact.FirstName; } }
@@ -22,10 +23,9 @@ namespace TabbedAppXamarin.ViewModels
 
         public string Name { get { return _contact.DisplayName; } }
 
-        public string PhoneNumber
-        {
-            get { return _contact.Phones.First(p => p.Label == "Mobile").Number; }
-        }
+        public List<Phone> PhoneNumbers => _contact.Phones;
+
+        public List<Email> Emails => _contact.Emails;
 
         public string SortByCharacter
         {
@@ -41,10 +41,5 @@ namespace TabbedAppXamarin.ViewModels
         }
 
         public object Contact { get { return _contact; } }
-    }
-
-    public class PhoneEventArgs
-    {
-        public string Phone { get; set; }
     }
 }
