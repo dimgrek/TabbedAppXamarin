@@ -1,30 +1,46 @@
 ﻿using System;
 using System.Linq;
-using Xamarin.Contacts;
+using Contacts.Plugin.Abstractions;
 
 namespace TabbedAppXamarin.ViewModels
 {
     public class ContactViewModel
     {
-        private AddressBook _book;
-        private Contact _contact;
+        private readonly Contact _contact;
 
-        public ContactViewModel(string id)
+        public ContactViewModel(Contact contact)
         {
-            _book = new AddressBook();
-            _contact = _book.FirstOrDefault(c => c.Id == id);
-            SetView();
+            _contact = contact;
         }
 
-        public event EventHandler<PhoneEventArgs> PhoneAdded;
+        public string Forename { get { return _contact.FirstName; } }
 
-        private void SetView()
+        public string Surname
         {
-            //foreach (var phone in _contact.Phones)
-            //{
-            //}   
-                PhoneAdded?.Invoke(this, new PhoneEventArgs {Phone = "34234324"});
+            get { return _contact.LastName ?? _contact.FirstName; }
         }
+
+        public string Name { get { return _contact.DisplayName; } }
+
+        public string PhoneNumber
+        {
+            get { return _contact.Phones.First(p => p.Label == "Mobile").Number; }
+        }
+
+        public string SortByCharacter
+        {
+            get
+            {
+                var str = _contact.LastName ?? _contact.FirstName;
+
+                if (string.IsNullOrEmpty(str))
+                    throw new Exception("The contact has no first or last name");
+
+                return str[0].ToString().ToUpper();
+            }
+        }
+
+        public object Contact { get { return _contact; } }
     }
 
     public class PhoneEventArgs

@@ -1,36 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
+             xmlns:behaviors1="clr-namespace:TabbedAppXamarin.Behaviors;assembly=TabbedAppXamarin"
              x:Class="TabbedAppXamarin.Views.ContactListPage"
              Title="Contacts list">
-  
   <StackLayout>
-    <SearchBar Placeholder="Search" Text="{Binding Text}" SearchCommand="{Binding SearchContactCommand}"/>
-    <ListView ItemsSource="{Binding GroupContactsList}" ItemSelected="OnSelected">>
-      <!--GroupDisplayBinding="{Binding Suffix}"
-      GroupShortNameBinding="{Binding Suffix}"
-      IsGroupingEnabled="true">--> 
-      <!---->
+    <SearchBar x:Name="search" Placeholder="Search">
+      <behaviors:Interaction.Behaviors>
+        <behaviors:BehaviorCollection>
+          <behaviors1:SearchBarTextChanged Command="{Binding SearchTextChanged}"/>
+          <!--b:EventToCommand EventName="TextChanged" Command="{Binding SearchTextChanged}" CommandParameter="{Binding Text, Source={x:Reference search}}"/-->
+        </behaviors:BehaviorCollection>
+      </behaviors:Interaction.Behaviors>
+    </SearchBar>
+    <ListView ItemsSource="{Binding FilteredContacts}" IsGroupingEnabled="true" GroupDisplayBinding="{Binding Key}" GroupShortNameBinding="{Binding Key}">
       <ListView.ItemTemplate>
         <DataTemplate>
-          <ViewCell>
-            <!--<ViewCell.ContextActions>
-            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
-          </ViewCell.ContextActions>-->
-            <Grid Padding="20, 0, 0, 0">
-              <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-              </Grid.RowDefinitions>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-              </Grid.ColumnDefinitions>
-              <Label Grid.Row="0" Grid.Column="0" Text="{Binding FirstName}" VerticalOptions="Center"/>
-              <Label Grid.Row="0" Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center" />
-            </Grid>
-          </ViewCell>
+          <TextCell Text="{Binding Name}" TextColor="Black">
+            <behaviors:Interaction.Behaviors>
+              <behaviors:BehaviorCollection>
+                <behaviors:EventToCommand EventName="Tapped" Command="{Binding ContactSelectedCommand}" CommandParameter="{Binding}"/>
+              </behaviors:BehaviorCollection>
+            </behaviors:Interaction.Behaviors>
+          </TextCell>
         </DataTemplate>
       </ListView.ItemTemplate>
-    </ListView>
-  </StackLayout>
+      </ListView>
+    </StackLayout>
 </ContentPage>

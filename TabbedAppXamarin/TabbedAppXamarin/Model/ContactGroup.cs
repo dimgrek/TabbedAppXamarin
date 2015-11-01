@@ -1,19 +1,17 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using Xamarin.Contacts;
 
 namespace TabbedAppXamarin.Model
 {
-    public class ContactGroup : ObservableCollection<Contact>
+    public class ContactGroup : List<Contact>
     {
-        public  ContactGroup(string firstName, Contact contact)
+        public  ContactGroup(string firstLetter)
         {
-            ShortName = firstName[0].ToString();
-            All = new ObservableCollection<Contact>();
-            All.Add(contact);
+            ShortName = firstLetter;
         }
 
         public string ShortName { get; set; }
 
-        public ObservableCollection<Contact> All { private set; get; }
+        public List<Contact> All { private set; get; }
     }
 }
