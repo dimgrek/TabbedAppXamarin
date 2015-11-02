@@ -11,6 +11,7 @@ namespace TabbedAppXamarin.Services.Entities
     {
         void Add(SomeEntity item);
         void Delete(SomeEntity item);
+        void Update(SomeEntity item);
         IEnumerable<SomeEntity> GetThings();
     }
     public class EntityService : IEntityService
@@ -32,6 +33,13 @@ namespace TabbedAppXamarin.Services.Entities
         {
             _connection.Delete(item);
             _connection.UpdateAll(_connection.Table<SomeEntity>());
+        }
+
+        public void Update(SomeEntity item)
+        {
+            _connection.Delete(item);
+            _connection.UpdateAll(_connection.Table<SomeEntity>());
+            _connection.Insert(item);
         }
 
         public IEnumerable<SomeEntity> GetThings()

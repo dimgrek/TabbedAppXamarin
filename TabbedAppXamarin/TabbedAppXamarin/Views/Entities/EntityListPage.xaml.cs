@@ -14,14 +14,14 @@ namespace TabbedAppXamarin.Views
             _vm = new EntityListViewModel(DependencyService.Get<IEntityService>());
             BindingContext = _vm;
             _vm.AddItemClicked += OnAddBtnClicked;
-            //_vm.ItemSelected += OnItemSelected;
+            _vm.ItemSelected += OnItemSelected;
             InitializeComponent();
         }
 
 
         async void OnItemSelected(object sender, EntitySelectedEventArgs e)
         { 
-           // await Navigation.PushAsync(new EntityViewPage(e.Id, _vm));
+           await Navigation.PushAsync(new EditEntityViewPage(e.Id, _vm));
         }
 
         async void OnAddBtnClicked(object sender, EventArgs e)
@@ -35,12 +35,12 @@ namespace TabbedAppXamarin.Views
                 _vm.OnSelectionCommand.Execute(e);
         }
 
-        //private void OnDelete(object sender, EventArgs e)
-        //{
-        //    var item = ((MenuItem)sender).CommandParameter as ContactItem;
-        //    var args = new SelectedItemChangedEventArgs(item);
-
         //    if (_vm.DeleteCommand.CanExecute(args))
+        //    var args = new SelectedItemChangedEventArgs(item);
+        //    var item = ((MenuItem)sender).CommandParameter as ContactItem;
+        //{
+
+        //private void OnDelete(object sender, EventArgs e)
         //        _vm.DeleteCommand.Execute(args);
         //}
     }

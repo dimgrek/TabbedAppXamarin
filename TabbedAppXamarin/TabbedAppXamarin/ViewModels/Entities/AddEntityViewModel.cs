@@ -28,13 +28,14 @@ namespace TabbedAppXamarin.ViewModels
             Name = _item.Name;
             Description = _item.Description;
             IsActive = _item.IsActive;
+            EditCommand = new Command(Edit);
+            DeleteCommand = new Command(Delete);
         }
 
         public AddEntityViewModel()
         {
             SaveCommand = new Command(Save);
             CancelCommand = new Command(Cancel);
-            //SwitchCommand = new Command(SwitchUpdate);
             IsActive = false;
         }
 
@@ -47,7 +48,8 @@ namespace TabbedAppXamarin.ViewModels
         }
 
         public ICommand SaveCommand { get; private set; }
-        public ICommand SwitchCommand { get; private set; }
+        public ICommand EditCommand { get; private set; }
+        public ICommand DeleteCommand { get; private set; }
         public ICommand CancelCommand { get; private set; }
 
         public string Name
@@ -55,6 +57,8 @@ namespace TabbedAppXamarin.ViewModels
             get { return _name; }
             set { _name = value; OnPropertyChanged();}
         }
+
+        public Guid Id { get; set; }
 
         public string Description
         {
@@ -64,25 +68,34 @@ namespace TabbedAppXamarin.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //private void SwitchUpdate()
-        //{
-        //    if(IsActive)
-        //        IsActive = false;
-
-        //    if (!IsActive)
-        //        IsActive = true;
-        //}
-
         private void Cancel()
         {
             ItemCanceled?.Invoke(this, EventArgs.Empty);
         }
 
+        private void Edit()
+        {
+            ItemEdited?.Invoke(this, new SomeEntityEventArgs { Entity = new SomeEntity
+            {
+                Id = _id,
+                Name = Name,
+                Description = Description,
+                IsActive = IsActive,
+                Updated = DateTime.Now
+            } });
+            ItemSaved?.Invoke(this, EventArgs.Empty);
+        }
+
         private void Save()
         {
-            Updated = DateTime.Now;
-            var item = AutoMapper.Mapper.DynamicMap<SomeEntity>(this);
-            ItemAdded?.Invoke(this, new SomeEntityEventArgs{ Entity = item });
+            ItemAdded?.Invoke(this, new SomeEntityEventArgs{ Entity = new SomeEntity
+            {
+                Id = Guid.NewGuid(),
+                Name = Name,
+                Description = Description,
+                IsActive = IsActive,
+                Updated = DateTime.Now
+            } });
             ItemSaved?.Invoke(this, EventArgs.Empty);
         }
 
@@ -94,6 +107,7 @@ namespace TabbedAppXamarin.ViewModels
         }
 
         public event EventHandler<SomeEntityEventArgs> ItemAdded;
+        public event EventHandler<SomeEntityEventArgs> ItemEdited;
         public event EventHandler<SomeEntityEventArgs> WhatItemDeleted;
         public event EventHandler ItemSaved;
         public event EventHandler ItemCanceled;

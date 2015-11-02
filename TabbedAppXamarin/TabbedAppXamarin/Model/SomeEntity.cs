@@ -6,10 +6,10 @@ namespace TabbedAppXamarin.Model
     [Table("ContactItem")]
     public class SomeEntity
     {
-        public SomeEntity()
-        {
-            Id = Guid.NewGuid();
-        }
+        //public SomeEntity()
+        //{
+        //    Id = Guid.NewGuid();
+        //}
 
         [PrimaryKey]
         public Guid Id { get; set; }

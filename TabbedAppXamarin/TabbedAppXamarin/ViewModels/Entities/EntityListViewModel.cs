@@ -55,7 +55,6 @@ namespace TabbedAppXamarin.ViewModels
             var entity = e.SelectedItem as SomeEntity;
             if (entity == null)
                 return;
-            var itemId = entity.Id;
             ItemSelected?.Invoke(this, new EntitySelectedEventArgs { Id = entity.Id });
         }
 
@@ -63,7 +62,17 @@ namespace TabbedAppXamarin.ViewModels
         {
             Entities.Add(e.Entity);
             _service.Add(e.Entity);
+        }
 
+        public void OnItemEdited(object sender, SomeEntityEventArgs e)
+        {
+            var itemToDelete = _service.GetThings().Single(x => x.Id == e.Entity.Id);
+            _service.Update(e.Entity);
+            Entities.Clear();
+            foreach (var entity in _service.GetThings())
+            {
+                Entities.Add(entity);
+            }
         }
     }
 

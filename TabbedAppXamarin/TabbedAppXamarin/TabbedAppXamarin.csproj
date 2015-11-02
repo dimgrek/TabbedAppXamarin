@@ -59,8 +59,8 @@
     <Compile Include="Views\Entities\EntityListPage.xaml.cs">
       <DependentUpon>EntityListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Entities\EntityViewPage.xaml.cs">
-      <DependentUpon>EntityViewPage.xaml</DependentUpon>
+    <Compile Include="Views\Entities\EditEntityViewPage.xaml.cs">
+      <DependentUpon>EditEntityViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Images\ImageCollectionPage.xaml.cs">
       <DependentUpon>ImageCollectionPage.xaml</DependentUpon>
@@ -150,7 +150,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Entities\EntityViewPage.xaml">
+    <EmbeddedResource Include="Views\Entities\EditEntityViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -12,7 +12,7 @@ namespace TabbedAppXamarin.iOS.Services.Database
     {
         public SQLiteConnection GetConnection()
         {
-            var sqliteFilename = "TodoSQLite1.db3";
+            var sqliteFilename = "TodoSQLite2.db3";
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var libraryPath = documentsPath;
             var path = Path.Combine(libraryPath, sqliteFilename);
