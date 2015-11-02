@@ -7,13 +7,13 @@ using Xamarin.Forms;
 
 namespace TabbedAppXamarin.Services.Entities
 {
-    public interface IEntiryService
+    public interface IEntityService
     {
         void Add(SomeEntity item);
         void Delete(SomeEntity item);
         IEnumerable<SomeEntity> GetThings();
     }
-    public class EntityService : IEntiryService
+    public class EntityService : IEntityService
     {
         private readonly SQLiteConnection _connection;
 

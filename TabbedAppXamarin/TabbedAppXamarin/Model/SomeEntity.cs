@@ -6,8 +6,14 @@ namespace TabbedAppXamarin.Model
     [Table("ContactItem")]
     public class SomeEntity
     {
+        public SomeEntity()
+        {
+            Id = Guid.NewGuid();
+        }
+
         [PrimaryKey]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }

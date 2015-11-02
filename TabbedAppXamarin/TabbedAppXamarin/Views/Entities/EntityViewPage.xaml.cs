@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace TabbedAppXamarin.Views
 {
-    public partial class EntitiesCollectionPage : ContentPage
+    public partial class EntityViewPage : ContentPage
     {
-        public EntitiesCollectionPage()
+        public EntityViewPage()
         {
             InitializeComponent();
         }
