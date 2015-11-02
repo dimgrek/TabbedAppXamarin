@@ -18,7 +18,7 @@ namespace TabbedAppXamarin.ViewModels
 
         public ContactListViewModel()
         {
-            SearchTextChanged = new Command<string>(s => FilterContacts(s));
+            SearchTextChanged = new Command<string>(FilterContacts);
             OnSelectionCommand = new Command<SelectedItemChangedEventArgs>(OnSelection);
             _contacts = new ObservableCollection<Grouping<string, ContactViewModel>>();
             _filteredContacts = new ObservableCollection<Grouping<string, ContactViewModel>>();
