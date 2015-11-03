@@ -10,23 +10,30 @@ using TabbedAppXamarin.Services.Entities;
 using TabbedAppXamarin.Views.Entities;
 using Xamarin.Forms;
 
-namespace TabbedAppXamarin.ViewModels
+namespace TabbedAppXamarin.ViewModels.Entities
 {
     public class EntityListViewModel:INotifyPropertyChanged
     {
-        private Color _itemColor;
-        private IEntityService _service;
+        private readonly IEntityService _service;
+        private bool _itemAdded;
+        private EntityViewModel _selectedItem;
 
         public EntityListViewModel(IEntityService service)
         {
             _service = service;
-            Entities = new ObservableCollection<EntityViewModel>(service.GetThingsOrdered().Select(x=>new EntityViewModel(x)));
+            Items = new ObservableCollection<EntityViewModel>(service.GetThingsOrdered().Select(x=>new EntityViewModel(x)));
             AddCommand = new Command(Add);
-            DeleteCommand = new Command<SelectedItemChangedEventArgs>(Delete);
             OnSelectionCommand = new Command<SelectedItemChangedEventArgs>(OnSelection);
         }
 
-        public ObservableCollection<EntityViewModel> Entities { get; set; }
+        public ObservableCollection<EntityViewModel> Items { get; set; }
+
+        public EntityViewModel SelectedItem
+        {
+            get { return _selectedItem; }
+            set { _selectedItem = value; OnPropertyChanged("SelectedItem");}
+        }
+
         public ICommand AddCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
         public ICommand OnSelectionCommand { get; private set; }
@@ -34,7 +41,6 @@ namespace TabbedAppXamarin.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler AddItemClicked;
         public event EventHandler<EntitySelectedEventArgs> ItemSelected;
-        public event EventHandler<EntitySelectedEventArgs> ItemDeleted;
 
         private void Add()
         {
@@ -43,41 +49,36 @@ namespace TabbedAppXamarin.ViewModels
 
         public void Delete(object sender, SomeEntityEventArgs entity)
         {
-            Entities.Remove(Entities.Single(o => o.Id == entity.Entity.Id));
-        }
-
-        private void Delete(SelectedItemChangedEventArgs e)
-        {
-            var entity = e.SelectedItem as SomeEntity;
-            if (entity == null)
-                return;
-
-            Entities.Remove(Entities.Single(o => o.Id == entity.Id));
-            _service.Delete(entity);
-            ItemDeleted?.Invoke(this, new EntitySelectedEventArgs { Id = entity.Id });
+            Items.Remove(Items.Single(o => o.Id == entity.Entity.Id));
         }
 
         private void OnSelection(SelectedItemChangedEventArgs e)
         {
-            var entity = e.SelectedItem as SomeEntity;
+            var entity = e.SelectedItem as EntityViewModel;
             if (entity == null)
                 return;
-            ItemSelected?.Invoke(this, new EntitySelectedEventArgs { Id = entity.Id });
+            ItemSelected?.Invoke(this,
+                _itemAdded
+                    ? new EntitySelectedEventArgs {Id = entity.Id, IsNewItem = true}
+                    : new EntitySelectedEventArgs {Id = entity.Id, IsNewItem = false});
         }
 
         public void OnNewItemAdded(object sender, SomeEntityEventArgs e)
         {
-            Entities.Add(new EntityViewModel(e.Entity));
+            var entityVM = new EntityViewModel(e.Entity);
+            Items.Add(entityVM);
+            SelectedItem = entityVM;
+            _itemAdded = true;
             _service.Add(e.Entity);
         }
 
         public void OnItemEdited(object sender, SomeEntityEventArgs e)
         {
             _service.Update(e.Entity);
-            Entities.Clear();
-            foreach (var entity in _service.GetThings().OrderBy(x => x.Name))
+            Items.Clear();
+            foreach (var entity in _service.GetThingsOrdered())
             {
-                Entities.Add(new EntityViewModel(entity));
+                Items.Add(new EntityViewModel(entity));
             }
         }
 
@@ -90,6 +91,7 @@ namespace TabbedAppXamarin.ViewModels
 
     public class EntitySelectedEventArgs
     {
+        public bool IsNewItem { get; set; }
         public Guid Id { get; set; }
     }
 

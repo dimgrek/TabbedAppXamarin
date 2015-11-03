@@ -1,25 +1,17 @@
 ﻿using System;
 using TabbedAppXamarin.Services.Entities;
-using TabbedAppXamarin.ViewModels;
+using TabbedAppXamarin.ViewModels.Entities;
 using Xamarin.Forms;
 
 namespace TabbedAppXamarin.Views
 {
     public partial class EntityListPage : ContentPage
     {
-        private EntityListViewModel _vm;
+        private readonly EntityListViewModel _vm;
 
         public EntityListPage()
         {
-            try
-            {
-
-                _vm = new EntityListViewModel(DependencyService.Get<EntityService>());
-            }
-            catch (Exception ex)
-            {
-                
-            }
+            _vm = new EntityListViewModel(DependencyService.Get<EntityService>());
             BindingContext = _vm;
             _vm.AddItemClicked += OnAddBtnClicked;
             _vm.ItemSelected += OnItemSelected;
@@ -28,13 +20,15 @@ namespace TabbedAppXamarin.Views
 
 
         async void OnItemSelected(object sender, EntitySelectedEventArgs e)
-        { 
-           await Navigation.PushAsync(new EditEntityViewPage(e.Id, _vm));
+        {
+            if (!e.IsNewItem)
+                await Navigation.PushAsync(new EditEntityViewPage(e.Id, _vm));
+            
         }
 
         async void OnAddBtnClicked(object sender, EventArgs e)
         {
-           await Navigation.PushAsync(new AddEntityPage(_vm));
+           await Navigation.PushAsync(new Entities.AddEntityPage(_vm));
         }
 
         private void OnSelected(object sender, SelectedItemChangedEventArgs e)
@@ -42,14 +36,5 @@ namespace TabbedAppXamarin.Views
             if (_vm.OnSelectionCommand.CanExecute(e))
                 _vm.OnSelectionCommand.Execute(e);
         }
-
-        //private void OnDelete(object sender, EventArgs e)
-        //{
-        //    var item = ((MenuItem)sender).CommandParameter as ContactItem;
-        //    var args = new SelectedItemChangedEventArgs(item);
-
-        //    if (_vm.DeleteCommand.CanExecute(args))
-        //        _vm.DeleteCommand.Execute(args);
-        //}
     }
 }

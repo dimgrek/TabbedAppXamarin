@@ -6,6 +6,7 @@ using System.Windows.Input;
 using TabbedAppXamarin.Annotations;
 using TabbedAppXamarin.Model;
 using TabbedAppXamarin.Services.Entities;
+using TabbedAppXamarin.ViewModels.Entities;
 using Xamarin.Forms;
 
 namespace TabbedAppXamarin.ViewModels
@@ -91,7 +92,6 @@ namespace TabbedAppXamarin.ViewModels
                 Description = Description,
                 IsActive = IsActive,
                 Updated = DateTime.Now
-                //Color = IsActive ? Color.Transparent : Color.Gray
             } });
             ItemSaved?.Invoke(this, EventArgs.Empty);
         }
@@ -105,7 +105,6 @@ namespace TabbedAppXamarin.ViewModels
                 Description = Description,
                 IsActive = IsActive,
                 Updated = DateTime.Now
-                //Color = IsActive ? Color.Transparent : Color.Gray
             } });
             ItemSaved?.Invoke(this, EventArgs.Empty);
         }
