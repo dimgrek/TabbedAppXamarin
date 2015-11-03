@@ -13,6 +13,7 @@ namespace TabbedAppXamarin.Services.Entities
         void Delete(SomeEntity item);
         void Update(SomeEntity item);
         IEnumerable<SomeEntity> GetThings();
+        IEnumerable<SomeEntity> GetThingsOrdered();
     }
     public class EntityService : IEntityService
     {
@@ -45,6 +46,12 @@ namespace TabbedAppXamarin.Services.Entities
         public IEnumerable<SomeEntity> GetThings()
         {
             var entities = _connection.Table<SomeEntity>().ToList();
+            return entities;
+        }
+
+        public IEnumerable<SomeEntity> GetThingsOrdered()
+        {
+            var entities = _connection.Table<SomeEntity>().ToList().OrderBy(e => e.Name);
             return entities;
         }
     }

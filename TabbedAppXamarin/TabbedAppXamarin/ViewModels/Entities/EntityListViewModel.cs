@@ -15,7 +15,7 @@ namespace TabbedAppXamarin.ViewModels
         public EntityListViewModel(IEntityService service)
         {
             _service = service;
-            Entities = new ObservableCollection<SomeEntity>(service.GetThings());
+            Entities = new ObservableCollection<SomeEntity>(service.GetThingsOrdered());
             AddCommand = new Command(Add);
             DeleteCommand = new Command<SelectedItemChangedEventArgs>(Delete);
             OnSelectionCommand = new Command<SelectedItemChangedEventArgs>(OnSelection);
@@ -66,10 +66,9 @@ namespace TabbedAppXamarin.ViewModels
 
         public void OnItemEdited(object sender, SomeEntityEventArgs e)
         {
-            var itemToDelete = _service.GetThings().Single(x => x.Id == e.Entity.Id);
             _service.Update(e.Entity);
             Entities.Clear();
-            foreach (var entity in _service.GetThings())
+            foreach (var entity in _service.GetThingsOrdered())
             {
                 Entities.Add(entity);
             }
