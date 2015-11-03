@@ -1,4 +1,5 @@
-﻿using TabbedAppXamarin.Views;
+﻿using TabbedAppXamarin.Services.Entities;
+using TabbedAppXamarin.Views;
 using Xamarin.Forms;
 
 namespace TabbedAppXamarin
@@ -8,6 +9,7 @@ namespace TabbedAppXamarin
         public App()
         {
             // The root page of your application
+            DependencyService.Register<EntityService>();
             MainPage = new MainPage();
         }
 

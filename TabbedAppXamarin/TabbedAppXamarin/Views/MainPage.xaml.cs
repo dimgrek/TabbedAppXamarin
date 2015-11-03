@@ -1,5 +1,4 @@
-﻿using TabbedAppXamarin.Services.Entities;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace TabbedAppXamarin.Views
 {
@@ -8,7 +7,6 @@ namespace TabbedAppXamarin.Views
         public MainPage()
         {
             InitializeComponent();
-            DependencyService.Register<EntityService>();
             Children.Add(new NavigationPage(new ContactListPage()) {Title = "Contacts"});
             Children.Add(new ImageCollectionPage {Title = "Images"});
             Children.Add(new NavigationPage(new EntityListPage()){Title = "Entities"});

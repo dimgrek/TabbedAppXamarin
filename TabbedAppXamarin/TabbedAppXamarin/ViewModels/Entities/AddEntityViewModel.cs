@@ -16,6 +16,8 @@ namespace TabbedAppXamarin.ViewModels
         private Guid _id;
         private bool _isActive;
         private SomeEntity _item;
+
+        private Color _itemColor;
         private string _name;
         private IEntityService _service;
 
@@ -66,6 +68,13 @@ namespace TabbedAppXamarin.ViewModels
             set { _description = value; OnPropertyChanged();}
         }
 
+        public Color ItemColor
+        {
+            get { return _itemColor; }
+            set { _itemColor = value; }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void Cancel()
@@ -82,6 +91,7 @@ namespace TabbedAppXamarin.ViewModels
                 Description = Description,
                 IsActive = IsActive,
                 Updated = DateTime.Now
+                //Color = IsActive ? Color.Transparent : Color.Gray
             } });
             ItemSaved?.Invoke(this, EventArgs.Empty);
         }
@@ -95,6 +105,7 @@ namespace TabbedAppXamarin.ViewModels
                 Description = Description,
                 IsActive = IsActive,
                 Updated = DateTime.Now
+                //Color = IsActive ? Color.Transparent : Color.Gray
             } });
             ItemSaved?.Invoke(this, EventArgs.Empty);
         }

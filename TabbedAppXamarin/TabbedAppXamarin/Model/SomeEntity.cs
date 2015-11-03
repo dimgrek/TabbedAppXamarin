@@ -18,5 +18,6 @@ namespace TabbedAppXamarin.Model
         public string Description { get; set; }
         public bool IsActive { get; set; }
         public DateTime Updated { get; set; }
+        //public Color Color { get; set; }
     }
 }

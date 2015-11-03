@@ -13,7 +13,6 @@ namespace TabbedAppXamarin.ViewModels
     {
         private ObservableCollection<Grouping<string, ContactViewModel>> _contacts;
         private ObservableCollection<Grouping<string, ContactViewModel>> _filteredContacts;
-        private string _text;
 
 
         public ContactListViewModel()

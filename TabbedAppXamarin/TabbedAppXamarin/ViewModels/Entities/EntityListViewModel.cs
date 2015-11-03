@@ -1,30 +1,37 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using TabbedAppXamarin.Annotations;
 using TabbedAppXamarin.Model;
 using TabbedAppXamarin.Services.Entities;
+using TabbedAppXamarin.Views.Entities;
 using Xamarin.Forms;
 
 namespace TabbedAppXamarin.ViewModels
 {
-    public class EntityListViewModel
+    public class EntityListViewModel:INotifyPropertyChanged
     {
+        private Color _itemColor;
         private IEntityService _service;
 
         public EntityListViewModel(IEntityService service)
         {
             _service = service;
-            Entities = new ObservableCollection<SomeEntity>(service.GetThingsOrdered());
+            Entities = new ObservableCollection<EntityViewModel>(service.GetThingsOrdered().Select(x=>new EntityViewModel(x)));
             AddCommand = new Command(Add);
             DeleteCommand = new Command<SelectedItemChangedEventArgs>(Delete);
             OnSelectionCommand = new Command<SelectedItemChangedEventArgs>(OnSelection);
         }
 
-        public ObservableCollection<SomeEntity> Entities { get; set; }
+        public ObservableCollection<EntityViewModel> Entities { get; set; }
         public ICommand AddCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
         public ICommand OnSelectionCommand { get; private set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler AddItemClicked;
         public event EventHandler<EntitySelectedEventArgs> ItemSelected;
         public event EventHandler<EntitySelectedEventArgs> ItemDeleted;
@@ -60,7 +67,7 @@ namespace TabbedAppXamarin.ViewModels
 
         public void OnNewItemAdded(object sender, SomeEntityEventArgs e)
         {
-            Entities.Add(e.Entity);
+            Entities.Add(new EntityViewModel(e.Entity));
             _service.Add(e.Entity);
         }
 
@@ -68,10 +75,16 @@ namespace TabbedAppXamarin.ViewModels
         {
             _service.Update(e.Entity);
             Entities.Clear();
-            foreach (var entity in _service.GetThingsOrdered())
+            foreach (var entity in _service.GetThings().OrderBy(x => x.Name))
             {
-                Entities.Add(entity);
+                Entities.Add(new EntityViewModel(entity));
             }
+        }
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 

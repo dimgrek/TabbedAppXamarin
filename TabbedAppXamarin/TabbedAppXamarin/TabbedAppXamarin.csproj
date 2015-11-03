@@ -62,6 +62,7 @@
     <Compile Include="Views\Entities\EditEntityViewPage.xaml.cs">
       <DependentUpon>EditEntityViewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Entities\EntityViewModel.cs" />
     <Compile Include="Views\Images\ImageCollectionPage.xaml.cs">
       <DependentUpon>ImageCollectionPage.xaml</DependentUpon>
     </Compile>
