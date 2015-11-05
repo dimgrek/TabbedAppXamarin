@@ -1,18 +1,20 @@
-﻿using System.IO;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Xamarin.Forms;
-using XLabs.Forms.Controls;
 
 namespace TabbedAppXamarin.Services.Networking
 {
-    public class RestClient
+    public class RestClient : IRestClient
     {
-        //public async Task<Stream> Get(string uri)
-        //{
-        //    var httpClient = new HttpClient();
-        //    var response = await httpClient.(uri);
-        //    return response.Content.ReadAsStreamAsync();
-        //}
+        public async Task<byte[]> GetBytes(string uri)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync(uri))
+                {
+                    var byteArray = await response.Content.ReadAsByteArrayAsync();
+                    return byteArray;
+                }
+            }
+        }
     }
 }

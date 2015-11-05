@@ -42,6 +42,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Database\ISQIite.cs" />
     <Compile Include="Services\Entities\EntityService.cs" />
+    <Compile Include="Services\Images\IDownloadImage.cs" />
     <Compile Include="Services\Images\ImageService.cs" />
     <Compile Include="Services\Networking\IRestClient.cs" />
     <Compile Include="Services\Networking\RestClient.cs" />

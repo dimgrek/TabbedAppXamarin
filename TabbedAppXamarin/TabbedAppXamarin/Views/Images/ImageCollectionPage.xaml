@@ -13,8 +13,8 @@
         RowSpacing="5"
         Padding="0"
         ColumnSpacing = "0"
-        ItemWidth ="180"
-        ItemHeight = "180"
+        ItemWidth ="400"
+        ItemHeight = "400"
         ItemsSource="{Binding Images}" 
         ItemSelected="OnSelected">
     <controls:GridView.ItemTemplate>

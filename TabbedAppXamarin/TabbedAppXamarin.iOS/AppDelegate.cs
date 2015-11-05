@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using TabbedAppXamarin.iOS.Services.Networking;
 using TabbedAppXamarin.Services.Entities;
 using UIKit;
 using Xamarin.Forms;
@@ -22,6 +23,7 @@ namespace TabbedAppXamarin.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             DependencyService.Register<EntityService>();
+            DependencyService.Register<DownloadImage>();
             Forms.Init();
             LoadApplication(new App());
 

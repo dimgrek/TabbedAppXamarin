@@ -14,6 +14,11 @@ namespace TabbedAppXamarin.ViewModels.Images
             RemoveCommand = new Command(RemoveImage);
         }
 
+        public ImageViewModel()
+        {
+            Source = ImageSource.FromUri(new Uri("http://lorempixel.com/400/400/"));
+        }
+
 
         public ImageSource Source { get; set; }
 
