@@ -21,7 +21,7 @@ namespace TabbedAppXamarin.Services.Entities
 
         public EntityService()
         {
-            _connection = DependencyService.Get<ISQLite>().GetConnection();
+            _connection = DependencyService.Get<ISQIite>().GetConnection();
             _connection.CreateTable<SomeEntity>();
         }
 

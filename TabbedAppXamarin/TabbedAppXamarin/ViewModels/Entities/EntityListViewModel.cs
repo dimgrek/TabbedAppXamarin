@@ -14,14 +14,16 @@ namespace TabbedAppXamarin.ViewModels.Entities
 {
     public class EntityListViewModel:INotifyPropertyChanged
     {
-        private readonly IEntityService _service;
+        private readonly EntityService _service;
         private bool _itemAdded;
         private EntityViewModel _selectedItem;
 
-        public EntityListViewModel(IEntityService service)
+        public EntityListViewModel()
         {
-            _service = service;
-            Items = new ObservableCollection<EntityViewModel>(service.GetThingsOrdered().Select(x=>new EntityViewModel(x)));
+            _service = DependencyService.Get<EntityService>();
+            Items = new ObservableCollection<EntityViewModel>(_service.
+                GetThingsOrdered().
+                Select(x=>new EntityViewModel(x)));
             AddCommand = new Command(Add);
             OnSelectionCommand = new Command<SelectedItemChangedEventArgs>(OnSelection);
         }

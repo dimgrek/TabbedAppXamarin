@@ -6,8 +6,8 @@ namespace TabbedAppXamarin.Views.Entities
 {
     public class EntityViewModel
     {
+        private readonly SomeEntity _entity;
         private Color _color;
-        private SomeEntity _entity;
 
         public EntityViewModel(SomeEntity entity)
         {

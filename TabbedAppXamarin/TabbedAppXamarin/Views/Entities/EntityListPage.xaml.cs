@@ -1,5 +1,4 @@
 ﻿using System;
-using TabbedAppXamarin.Services.Entities;
 using TabbedAppXamarin.ViewModels.Entities;
 using Xamarin.Forms;
 
@@ -11,7 +10,7 @@ namespace TabbedAppXamarin.Views
 
         public EntityListPage()
         {
-            _vm = new EntityListViewModel(DependencyService.Get<EntityService>());
+            _vm = new EntityListViewModel();
             BindingContext = _vm;
             _vm.AddItemClicked += OnAddBtnClicked;
             _vm.ItemSelected += OnItemSelected;

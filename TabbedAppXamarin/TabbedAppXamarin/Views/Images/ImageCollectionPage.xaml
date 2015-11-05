@@ -1,6 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="TabbedAppXamarin.Views.ImageCollectionPage">
-  <Label Text="Hello Images Collection" VerticalOptions="Center" HorizontalOptions="Center" />
+  
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Refresh" Command="{Binding RefreshCommand}"/>
+  </ContentPage.ToolbarItems>
+  <StackLayout x:Name="StackLayout" />
+  <controls:GridView
+        x:Name="GrdView"
+        RowSpacing="5"
+        Padding="0"
+        ColumnSpacing = "0"
+        ItemWidth ="180"
+        ItemHeight = "180"
+        ItemsSource="{Binding Images}" 
+        ItemSelected="OnSelected">
+    <controls:GridView.ItemTemplate>
+      <DataTemplate >
+        <ViewCell>
+          <ViewCell.View>
+            <Image Source="{Binding Source}"/>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </controls:GridView.ItemTemplate>
+  </controls:GridView>
 </ContentPage>

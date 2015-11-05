@@ -2,7 +2,7 @@
 
 namespace TabbedAppXamarin.Services.Database
 {
-    public interface ISQLite
+    public interface ISQIite
     {
         SQLiteConnection GetConnection();
     }

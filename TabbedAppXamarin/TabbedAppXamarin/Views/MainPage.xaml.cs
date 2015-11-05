@@ -8,8 +8,8 @@ namespace TabbedAppXamarin.Views
         {
             InitializeComponent();
             Children.Add(new NavigationPage(new ContactListPage()) {Title = "Contacts"});
-            Children.Add(new ImageCollectionPage {Title = "Images"});
-            Children.Add(new NavigationPage(new EntityListPage()){Title = "Items"});
+            Children.Add(new NavigationPage(new ImageCollectionPage()){ Title = "Images"});
+            //Children.Add(new NavigationPage(new EntityListPage()){Title = "Items"});
             Children.Add(new ImageEditorPage{ Title = "Editor"});
         }
     }

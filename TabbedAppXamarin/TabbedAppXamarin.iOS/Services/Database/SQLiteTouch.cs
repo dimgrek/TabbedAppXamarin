@@ -8,11 +8,11 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(SQLiteTouch))]
 namespace TabbedAppXamarin.iOS.Services.Database
 {
-    public class SQLiteTouch : ISQLite
+    public class SQLiteTouch : ISQIite
     {
         public SQLiteConnection GetConnection()
         {
-            var sqliteFilename = "TodoSQLite4.db3";
+            var sqliteFilename = "TodoSQLite5.db3";
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var libraryPath = documentsPath;
             var path = Path.Combine(libraryPath, sqliteFilename);
