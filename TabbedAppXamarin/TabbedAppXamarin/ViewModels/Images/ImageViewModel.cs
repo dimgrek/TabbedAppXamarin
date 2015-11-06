@@ -14,29 +14,24 @@ namespace TabbedAppXamarin.ViewModels.Images
             RemoveCommand = new Command(RemoveImage);
         }
 
-        public ImageViewModel()
-        {
-            Source = ImageSource.FromUri(new Uri("http://lorempixel.com/400/400/"));
-        }
-
-
         public ImageSource Source { get; set; }
-
         public ICommand EditCommand { get; set; }
         public ICommand SaveCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
 
         private void RemoveImage()
         {
-            throw new NotImplementedException();
+            RemovePressed?.Invoke(this, new ImageSelectedEventArgs { Source = Source });
         }
 
         private void SaveImage()
         {
-            throw new NotImplementedException();
+            SavePressed?.Invoke(this, new ImageSelectedEventArgs { Source = Source });
         }
 
         public event EventHandler<ImageSelectedEventArgs> EditPressed;
+        public event EventHandler<ImageSelectedEventArgs> RemovePressed;
+        public event EventHandler<ImageSelectedEventArgs> SavePressed;
 
         private void EditImage()
         {

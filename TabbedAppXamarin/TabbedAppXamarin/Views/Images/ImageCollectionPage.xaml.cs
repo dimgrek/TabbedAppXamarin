@@ -19,8 +19,7 @@ namespace TabbedAppXamarin.Views
 
         async void OnItemSelected(object sender, ImageSelectedEventArgs e)
         {
-            await Navigation.PushAsync(new ImageViewPage(e.Source));
-
+            await Navigation.PushAsync(new ImageViewPage(e.Source, _vm));
         }
 
         private void OnSelected(object sender, EventArgs<object> eventArgs)
