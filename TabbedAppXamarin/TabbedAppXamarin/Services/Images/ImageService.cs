@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TabbedAppXamarin.Services.Networking;
 using Xamarin.Forms;
 
@@ -18,11 +19,12 @@ namespace TabbedAppXamarin.Services.Images
             _di = DependencyService.Get<IDownloadImage>();
         }
 
-        public async void SaveImage(int imageNumber)
+        public async Task<int> SaveImage(int imageNumber)
         {
             var uri = ImageURL + ImageWidth + ImageHeight;
             var t = await _restClient.GetBytes(uri);
             _di.SaveImage(t, imageNumber);
+            return 0;
         }
 
         public static byte[] ReadToEnd(System.IO.Stream stream)
@@ -82,12 +84,12 @@ namespace TabbedAppXamarin.Services.Images
             return _di.ShowLocalFileName();
         }
 
-        //}
-        //    return responce;
-        //    var responce = await _restClient.GetAsync(uri);
-        //    var uri = ImageURL + ImageWidth + ImageHeight;
-        //{
-
         //public async Task<byte[]> ReturnResponce()
+        //{
+        //    var uri = ImageURL + ImageWidth + ImageHeight;
+        //    var responce = await _restClient.GetAsync(uri);
+        //    return responce;
+
+        //}
     }
 }

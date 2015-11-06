@@ -25,7 +25,7 @@ namespace TabbedAppXamarin.ViewModels.Images
         public ObservableCollection<ImageViewModel> Images { get; set; }
         public event EventHandler<ImageSelectedEventArgs> ItemSelected;
 
-        private void ShowImages()
+        private async void ShowImages()
         {
             await _is.SaveImage(1);
             //var imagePath = _is.ShowPath();
