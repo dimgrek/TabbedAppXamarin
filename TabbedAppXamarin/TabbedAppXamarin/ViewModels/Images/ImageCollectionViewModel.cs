@@ -45,6 +45,7 @@ namespace TabbedAppXamarin.ViewModels.Images
 
         private async void ShowPreloaders()
         {
+            //todo: scale to 50 images
             Images.Add(new ImageViewModel(ImageSource.FromFile("preloader.png")));
             _imagePath = await _is.SaveImage(0);
         }
@@ -69,6 +70,7 @@ namespace TabbedAppXamarin.ViewModels.Images
 
         private void Refresh()
         {
+            //todo: implement refresh logic properly
             ShowPreloaders();
         }
     }

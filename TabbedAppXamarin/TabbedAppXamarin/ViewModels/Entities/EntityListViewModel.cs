@@ -33,7 +33,7 @@ namespace TabbedAppXamarin.ViewModels.Entities
         public EntityViewModel SelectedItem
         {
             get { return _selectedItem; }
-            set { _selectedItem = value; OnPropertyChanged("SelectedItem");}
+            set { _selectedItem = value; OnPropertyChanged();}
         }
 
         public ICommand AddCommand { get; private set; }

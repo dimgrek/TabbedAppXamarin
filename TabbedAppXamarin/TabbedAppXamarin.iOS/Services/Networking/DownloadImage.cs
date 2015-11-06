@@ -33,7 +33,7 @@ namespace TabbedAppXamarin.iOS.Services.Networking
 
         public void SaveImageToGallery(string path)
         {
-            //var image = new CGImage();
+           //todo: create UIImage
             var someImage = UIImage.FromFile(path);
             someImage.SaveToPhotosAlbum((image, error) => {
                 var o = image;
