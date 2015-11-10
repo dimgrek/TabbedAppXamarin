@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
-using TabbedAppXamarin.iOS.Services.Networking;
+using TabbedAppXamarin.iOS.Services.Images;
 using TabbedAppXamarin.Services.Images;
 using UIKit;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(DownloadImage))]
-namespace TabbedAppXamarin.iOS.Services.Networking
+namespace TabbedAppXamarin.iOS.Services.Images
 {
     public class DownloadImage : IDownloadImage
     {

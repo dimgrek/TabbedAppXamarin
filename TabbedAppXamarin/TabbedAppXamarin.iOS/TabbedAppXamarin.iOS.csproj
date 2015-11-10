@@ -90,8 +90,10 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\Contacts\DialNumberService.cs" />
+    <Compile Include="Services\Contacts\SendMailService.cs" />
     <Compile Include="Services\Database\SQLiteTouch.cs" />
-    <Compile Include="Services\Networking\DownloadImage.cs" />
+    <Compile Include="Services\Images\DownloadImage.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />

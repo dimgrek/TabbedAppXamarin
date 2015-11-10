@@ -26,9 +26,6 @@ namespace TabbedAppXamarin.ViewModels
 
             if (hasPermission)
             {
-                //var vms = CrossContacts.Current.Contacts.Where(c => Matches(c))
-                    //.Select(c => new ContactViewModel(c));
-
                 var vms = CrossContacts.Current.Contacts.Select(c => new ContactViewModel(c));
 
                 var grouped = from contact in vms
@@ -86,7 +83,7 @@ namespace TabbedAppXamarin.ViewModels
             {
                 foreach (var g in Contacts)
                 {
-                    var matches = g.Where(vm => vm.Name.Contains(filter));
+                    var matches = g.Where(vm => vm.Name.ToLower().Contains(filter.ToLower()));
 
                     if (matches.Any())
                     {

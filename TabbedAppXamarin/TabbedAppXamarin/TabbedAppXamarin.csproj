@@ -40,6 +40,8 @@
     <Compile Include="Model\SomeEntity.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Contacts\IDialNumberService.cs" />
+    <Compile Include="Services\Contacts\ISendMailService.cs" />
     <Compile Include="Services\Database\ISQIite.cs" />
     <Compile Include="Services\Entities\EntityService.cs" />
     <Compile Include="Services\Images\IDownloadImage.cs" />

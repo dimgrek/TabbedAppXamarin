@@ -1,5 +1,6 @@
 ﻿using Foundation;
-using TabbedAppXamarin.iOS.Services.Networking;
+using TabbedAppXamarin.iOS.Services.Contacts;
+using TabbedAppXamarin.iOS.Services.Images;
 using TabbedAppXamarin.Services.Entities;
 using UIKit;
 using Xamarin.Forms;
@@ -13,6 +14,13 @@ namespace TabbedAppXamarin.iOS
     [Register("AppDelegate")]
     public class AppDelegate : XFormsApplicationDelegate
     {
+        private UIWindow window;
+
+        public UIWindow Window
+        {
+            get { return window; }
+        }
+
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -24,6 +32,8 @@ namespace TabbedAppXamarin.iOS
         {
             DependencyService.Register<EntityService>();
             DependencyService.Register<DownloadImage>();
+            DependencyService.Register<DialNumberService>();
+            DependencyService.Register<SendMailService>();
             Forms.Init();
             LoadApplication(new App());
 
