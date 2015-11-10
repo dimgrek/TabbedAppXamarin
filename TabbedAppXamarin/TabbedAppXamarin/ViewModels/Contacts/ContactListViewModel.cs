@@ -29,10 +29,11 @@ namespace TabbedAppXamarin.ViewModels
                 var vms = CrossContacts.Current.Contacts.Select(c => new ContactViewModel(c));
 
                 var grouped = from contact in vms
-                    orderby contact.Surname
-                    group contact by contact.SortByCharacter
-                    into contactGroup
-                    select new Grouping<string, ContactViewModel>(contactGroup.Key, contactGroup);
+                              where (!string.IsNullOrEmpty(contact.Surname))
+                              orderby contact.Surname
+                              group contact by contact.SortByCharacter
+                              into contactGroup
+                              select new Grouping<string, ContactViewModel>(contactGroup.Key, contactGroup);
 
                 foreach (var g in grouped)
                 {
@@ -106,5 +107,5 @@ namespace TabbedAppXamarin.ViewModels
     }
 }
 
-       
+
 

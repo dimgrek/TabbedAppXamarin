@@ -14,14 +14,13 @@ namespace TabbedAppXamarin.ViewModels
             
         }
 
-        public string Forename { get { return _contact.FirstName; } }
+        public List<Organization> Organizations => _contact.Organizations;
 
-        public string Surname
-        {
-            get { return _contact.LastName ?? _contact.FirstName; }
-        }
+        public string Forename => _contact.FirstName;
 
-        public string Name { get { return _contact.DisplayName; } }
+        public string Surname => _contact.LastName ?? _contact.FirstName;
+
+        public string Name => _contact.DisplayName;
 
         public List<Phone> PhoneNumbers => _contact.Phones;
 
@@ -34,7 +33,7 @@ namespace TabbedAppXamarin.ViewModels
                 var str = _contact.LastName ?? _contact.FirstName;
 
                 if (string.IsNullOrEmpty(str))
-                    throw new Exception("The contact has no first or last name");
+                    new Exception("Contact contains neither last name nor first name");
 
                 return str[0].ToString().ToUpper();
             }

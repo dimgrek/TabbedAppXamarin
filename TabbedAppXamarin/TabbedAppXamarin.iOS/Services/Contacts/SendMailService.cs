@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using MessageUI;
 using TabbedAppXamarin.iOS.Services.Contacts;
 using TabbedAppXamarin.Services.Contacts;
@@ -39,7 +37,7 @@ namespace TabbedAppXamarin.iOS.Services.Contacts
             //rootController.PresentViewController(controller, true, null);
 
 
-            //UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(controller, true, null);
+            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(controller, true, null);
         }
     }
 }
