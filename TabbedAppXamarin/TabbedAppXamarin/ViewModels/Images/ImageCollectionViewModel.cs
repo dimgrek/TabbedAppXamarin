@@ -17,9 +17,8 @@ namespace TabbedAppXamarin.ViewModels.Images
         public ImageCollectionViewModel()
         {
             Images = new ObservableCollection<ImageViewModel>();
-            RefreshCommand = new Command(AddImage);
+            RefreshCommand = new Command(Refresh);
             _is = new ImageService();
-            _is.ImageDownloaded += AddImage;
             ShowPreloaders();
             OnSelectionCommand = new Command<EventArgs<object>>(OnSelection);
         }
@@ -28,16 +27,9 @@ namespace TabbedAppXamarin.ViewModels.Images
         public ICommand OnSelectionCommand { get; private set; }
         public ObservableCollection<ImageViewModel> Images { get; set; }
 
-        private void AddImage()
+        private void AddImage(int imageNumber)
         {
-            Images.RemoveAt(0);
-            Images.Add(new ImageViewModel(ImageSource.FromFile(_imagePath)));
-        }
-
-
-        private void AddImage(object sender, EventArgs e)
-        {
-            Images.RemoveAt(0);
+            Images.RemoveAt(imageNumber);
             Images.Add(new ImageViewModel(ImageSource.FromFile(_imagePath)));
         }
 
@@ -46,8 +38,12 @@ namespace TabbedAppXamarin.ViewModels.Images
         private async void ShowPreloaders()
         {
             //todo: scale to 50 images
-            Images.Add(new ImageViewModel(ImageSource.FromFile("preloader.png")));
-            _imagePath = await _is.SaveImage(0);
+            for (var i = 0; i < 5; i++)
+            {
+                Images.Add(new ImageViewModel(ImageSource.FromFile("preloader.gif")));
+                _imagePath = await _is.SaveImage(i);
+                AddImage(i);
+            }
         }
 
         public void SaveImageToGallery(object sender, ImageSelectedEventArgs image)
@@ -70,7 +66,7 @@ namespace TabbedAppXamarin.ViewModels.Images
 
         private void Refresh()
         {
-            //todo: implement refresh logic properly
+            Images.Clear();
             ShowPreloaders();
         }
     }

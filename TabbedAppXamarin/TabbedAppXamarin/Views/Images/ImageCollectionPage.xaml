@@ -7,13 +7,13 @@
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Refresh" Command="{Binding RefreshCommand}"/>
   </ContentPage.ToolbarItems>
-  <!--<StackLayout x:Name="StackLayout" />
+  <StackLayout x:Name="StackLayout" />
   <controls:GridView
         x:Name="GrdView"
         RowSpacing="5"
         Padding="0"
         ColumnSpacing = "0"
-        ItemWidth ="180"
+        ItemWidth ="185"
         ItemHeight = "180"
         ItemsSource="{Binding Images}" 
         ItemSelected="OnSelected">
@@ -26,5 +26,5 @@
         </ViewCell>
       </DataTemplate>
     </controls:GridView.ItemTemplate>
-  </controls:GridView>-->
+  </controls:GridView>
 </ContentPage>

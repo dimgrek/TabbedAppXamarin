@@ -44,7 +44,7 @@
     <Compile Include="Services\Contacts\ISendMailService.cs" />
     <Compile Include="Services\Database\ISQIite.cs" />
     <Compile Include="Services\Entities\EntityService.cs" />
-    <Compile Include="Services\Images\IDownloadImage.cs" />
+    <Compile Include="Services\Images\ISaveImage.cs" />
     <Compile Include="Services\Images\ImageService.cs" />
     <Compile Include="Services\Networking\IRestClient.cs" />
     <Compile Include="Services\Networking\RestClient.cs" />
