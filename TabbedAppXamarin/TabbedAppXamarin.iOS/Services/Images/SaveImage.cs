@@ -11,11 +11,7 @@ namespace TabbedAppXamarin.iOS.Services.Images
     public class SaveImage : ISaveImage
     {
         private const string ImageType = ".png";
-        private string _localPath;
-        private string _preloaderPath;
-        public string LocalPath { get { return _localPath;} set { _localPath = value; } }
-
-        //public string PreloaderPath { get { return _preloaderPath; } set { _preloaderPath = value; } }
+        public string LocalPath { get; set; }
 
         public void SaveImageLocally(byte[] bytes, int imageNumber)
         {
@@ -27,33 +23,17 @@ namespace TabbedAppXamarin.iOS.Services.Images
 
         public string ShowLocalFileName()
         {
-            return _localPath;
+            return LocalPath;
         }
 
 
-        public void SaveImageToGallery(string path)
+        public void SaveImageToGallery(string file)
         {
-           //todo: create UIImage
-            var someImage = UIImage.FromFile(path);
+            var someImage = UIImage.FromFile(file);
             someImage.SaveToPhotosAlbum((image, error) => {
                 var o = image;
                 Console.WriteLine("error:" + error);
             });
         }
-
-        //    var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-        //{
-
-        //public void SavePreloader(byte[] bytes, int imageNumber)
-        //}
-        //    return _preloaderPath;
-        //{
-
-
-        //public string ShowPreloaderFileName()
-        //    var localFilename = "downloadedPreloader" + imageNumber + ImageType;
-        //    PreloaderPath = Path.Combine(documentsPath, localFilename);
-        //    File.WriteAllBytes(PreloaderPath, bytes);
-        //}
     }
 }

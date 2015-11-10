@@ -41,14 +41,14 @@ namespace TabbedAppXamarin.ViewModels.Images
             for (var i = 0; i < 5; i++)
             {
                 Images.Add(new ImageViewModel(ImageSource.FromFile("preloader.gif")));
-                _imagePath = await _is.SaveImage(i);
+                _imagePath = await _is.SaveImageLocally(i);
                 AddImage(i);
             }
         }
 
         public void SaveImageToGallery(object sender, ImageSelectedEventArgs image)
         {
-            _is.SaveImageToGallery(image.Source.ToString());
+            _is.SaveImageToGallery(((FileImageSource)image.Source).File);
         }
 
         public void Remove(object sender, ImageSelectedEventArgs image)
@@ -69,10 +69,5 @@ namespace TabbedAppXamarin.ViewModels.Images
             Images.Clear();
             ShowPreloaders();
         }
-    }
-
-    public class ImageSelectedEventArgs
-    {
-        public ImageSource Source { get; set; }
     }
 }
