@@ -22,21 +22,7 @@ namespace TabbedAppXamarin.iOS.Services.Contacts
                     completed(e.Result == MFMailComposeResult.Sent);
                 e.Controller.DismissViewController(true, null);
             };
-
-            //Adapt this to your app structure
-            //var rootController = ((AppDelegate)(UIApplication.SharedApplication.Delegate)).Window.RootViewController.ChildViewControllers[0].ChildViewControllers[1].ChildViewControllers[0];
-            //var navcontroller = rootController as UINavigationController;
-            //if (navcontroller != null)
-            //    rootController = navcontroller.VisibleViewController;
-            //rootController.PresentViewController(controller, true, null);
-
-            //var rootController = ((AppDelegate)(UIApplication.SharedApplication.Delegate)).Window.RootViewController.PresentedViewController;
-            //var navcontroller = rootController as UINavigationController;
-            //if (navcontroller != null)
-            //    rootController = navcontroller.VisibleViewController;
-            //rootController.PresentViewController(controller, true, null);
-
-
+            
             UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(controller, true, null);
         }
     }

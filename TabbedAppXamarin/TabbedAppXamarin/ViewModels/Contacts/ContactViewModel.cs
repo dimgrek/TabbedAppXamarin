@@ -11,7 +11,6 @@ namespace TabbedAppXamarin.ViewModels
         public ContactViewModel(Contact contact)
         {
             _contact = contact;
-            
         }
 
         public List<Organization> Organizations => _contact.Organizations;
@@ -39,6 +38,6 @@ namespace TabbedAppXamarin.ViewModels
             }
         }
 
-        public object Contact { get { return _contact; } }
+        public object Contact => _contact;
     }
 }

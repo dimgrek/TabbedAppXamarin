@@ -1,5 +1,4 @@
-﻿using System;
-using TabbedAppXamarin.Services.Contacts;
+﻿using TabbedAppXamarin.Services.Contacts;
 using TabbedAppXamarin.ViewModels;
 using Xamarin.Forms;
 
@@ -7,9 +6,9 @@ namespace TabbedAppXamarin.Views
 {
     public partial class ContactViewPage : ContentPage
     {
-        private ContactViewModel _cvm;
-        private IDialNumberService _ds;
-        private StackLayout _stack;
+        private readonly ContactViewModel _cvm;
+        private readonly IDialNumberService _ds;
+        private readonly StackLayout _stack;
 
         public ContactViewPage(ContactViewModel cvm)
         {
@@ -96,11 +95,6 @@ namespace TabbedAppXamarin.Views
                 grid.Children.Add(sendBtn, 1, 0);
                 _stack.Children.Add(grid);
             }
-        }
-
-        async void OnBtnClicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
         }
     }
 }

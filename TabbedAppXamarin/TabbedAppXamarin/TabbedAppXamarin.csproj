@@ -53,6 +53,8 @@
     <Compile Include="ViewModels\Entities\EntityListViewModel.cs" />
     <Compile Include="ViewModels\Entities\AddEntityViewModel.cs" />
     <Compile Include="ViewModels\Contacts\Grouping.cs" />
+    <Compile Include="ViewModels\Entities\EntitySelectedEventArgs.cs" />
+    <Compile Include="ViewModels\Entities\SomeEntityEventArgs.cs" />
     <Compile Include="ViewModels\Images\ImageCollectionViewModel.cs" />
     <Compile Include="ViewModels\Images\ImageViewModel.cs" />
     <Compile Include="Views\Entities\AddEntityPage.xaml.cs">

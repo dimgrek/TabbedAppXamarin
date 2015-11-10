@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using TabbedAppXamarin.Annotations;
-using TabbedAppXamarin.Model;
 using TabbedAppXamarin.Services.Entities;
 using TabbedAppXamarin.Views.Entities;
 using Xamarin.Forms;
@@ -63,6 +62,8 @@ namespace TabbedAppXamarin.ViewModels.Entities
                 _itemAdded
                     ? new EntitySelectedEventArgs {Id = entity.Id, IsNewItem = true}
                     : new EntitySelectedEventArgs {Id = entity.Id, IsNewItem = false});
+            _itemAdded = false;
+
         }
 
         public void OnNewItemAdded(object sender, SomeEntityEventArgs e)
@@ -76,6 +77,7 @@ namespace TabbedAppXamarin.ViewModels.Entities
 
         public void OnItemEdited(object sender, SomeEntityEventArgs e)
         {
+            _itemAdded = false;
             _service.Update(e.Entity);
             Items.Clear();
             foreach (var entity in _service.GetThingsOrdered())
@@ -89,17 +91,6 @@ namespace TabbedAppXamarin.ViewModels.Entities
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
-
-    public class EntitySelectedEventArgs
-    {
-        public bool IsNewItem { get; set; }
-        public Guid Id { get; set; }
-    }
-
-    public class SomeEntityEventArgs
-    {
-        public SomeEntity Entity { get; set; }
     }
 }
 
