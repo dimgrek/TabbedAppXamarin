@@ -28,9 +28,7 @@ namespace TabbedAppXamarin.Views.Images
 
         private void ShowImage()
         {
-            //var zi = DependencyService.Get<IZoomImage>();
             var sv = new CustomScrollView();
-            //zi.CreateImageView(Width, Height, (FileImageSource)_vm.Source);
             var image = new Image {Source = _vm.Source};
             var btn = new Button
             {

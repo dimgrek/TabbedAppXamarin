@@ -32,7 +32,6 @@ namespace TabbedAppXamarin.iOS
         {
             DependencyService.Register<EntityService>();
             DependencyService.Register<SaveImageService>();
-            DependencyService.Register<ZoomImage>();
             DependencyService.Register<DialNumberService>();
             DependencyService.Register<SendMailService>();
             Forms.Init();

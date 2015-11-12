@@ -47,7 +47,6 @@
     <Compile Include="Services\Entities\EntityService.cs" />
     <Compile Include="Services\Images\ISaveImageService.cs" />
     <Compile Include="Services\Images\ImageService.cs" />
-    <Compile Include="Services\Images\IZoomImage.cs" />
     <Compile Include="Services\Networking\IRestClient.cs" />
     <Compile Include="Services\Networking\RestClient.cs" />
     <Compile Include="ViewModels\Contacts\ContactListViewModel.cs" />

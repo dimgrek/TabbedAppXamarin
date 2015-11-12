@@ -95,7 +95,6 @@
     <Compile Include="Services\Contacts\SendMailService.cs" />
     <Compile Include="Services\Database\SQLiteTouch.cs" />
     <Compile Include="Services\Images\SaveImageService.cs" />
-    <Compile Include="Services\Images\ZoomImage.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
