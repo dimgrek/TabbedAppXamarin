@@ -31,7 +31,8 @@ namespace TabbedAppXamarin.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             DependencyService.Register<EntityService>();
-            DependencyService.Register<SaveImage>();
+            DependencyService.Register<SaveImageService>();
+            DependencyService.Register<ZoomImage>();
             DependencyService.Register<DialNumberService>();
             DependencyService.Register<SendMailService>();
             Forms.Init();

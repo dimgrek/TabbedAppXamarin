@@ -1,6 +1,6 @@
 ﻿namespace TabbedAppXamarin.Services.Images
 {
-    public interface ISaveImage
+    public interface ISaveImageService
     {
         void SaveImageLocally(byte[] bytes, int imageNumber);
         void SaveImageToGallery(string path);

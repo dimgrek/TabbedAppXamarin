@@ -9,7 +9,7 @@ namespace TabbedAppXamarin.ViewModels.Images
         public ImageViewModel(ImageSource source)
         {
             Source = source;
-            EditCommand = new Command(EditImage);
+            //EditCommand = new Command(EditImage);
             SaveCommand = new Command(SaveImage);
             RemoveCommand = new Command(RemoveImage);
         }
@@ -33,7 +33,7 @@ namespace TabbedAppXamarin.ViewModels.Images
         public event EventHandler<ImageSelectedEventArgs> RemovePressed;
         public event EventHandler<ImageSelectedEventArgs> SavePressed;
 
-        private void EditImage()
+        public void EditImage()
         {
             EditPressed?.Invoke(this, new ImageSelectedEventArgs { Source = Source });
         }

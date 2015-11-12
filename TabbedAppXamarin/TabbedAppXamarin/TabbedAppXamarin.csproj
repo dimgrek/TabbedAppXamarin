@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Behaviors\SearchBarTextChanged.cs" />
+    <Compile Include="Controls\CustomScrollView.cs" />
     <Compile Include="Model\SomeEntity.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -44,8 +45,9 @@
     <Compile Include="Services\Contacts\ISendMailService.cs" />
     <Compile Include="Services\Database\ISQIite.cs" />
     <Compile Include="Services\Entities\EntityService.cs" />
-    <Compile Include="Services\Images\ISaveImage.cs" />
+    <Compile Include="Services\Images\ISaveImageService.cs" />
     <Compile Include="Services\Images\ImageService.cs" />
+    <Compile Include="Services\Images\IZoomImage.cs" />
     <Compile Include="Services\Networking\IRestClient.cs" />
     <Compile Include="Services\Networking\RestClient.cs" />
     <Compile Include="ViewModels\Contacts\ContactListViewModel.cs" />
@@ -105,6 +107,10 @@
     </Reference>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MR.Gestures, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MR.Gestures.1.2.4\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\MR.Gestures.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SQLite-net, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">

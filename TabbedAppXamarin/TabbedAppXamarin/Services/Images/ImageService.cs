@@ -10,12 +10,12 @@ namespace TabbedAppXamarin.Services.Images
         private const string ImageWidth = "400/";
         private const string ImageHeight = "400/";
         private readonly IRestClient _restClient;
-        private ISaveImage _di;
+        private ISaveImageService _di;
 
         public ImageService()
         {
             _restClient = new RestClient();
-            _di = DependencyService.Get<ISaveImage>();
+            _di = DependencyService.Get<ISaveImageService>();
         }
 
         public async Task<string> SaveImageLocally(int imageNumber)

@@ -5,10 +5,10 @@ using TabbedAppXamarin.Services.Images;
 using UIKit;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(SaveImage))]
+[assembly: Dependency(typeof(SaveImageService))]
 namespace TabbedAppXamarin.iOS.Services.Images
 {
-    public class SaveImage : ISaveImage
+    public class SaveImageService : ISaveImageService
     {
         private const string ImageType = ".png";
         public string LocalPath { get; set; }
