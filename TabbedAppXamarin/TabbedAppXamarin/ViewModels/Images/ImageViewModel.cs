@@ -9,7 +9,7 @@ namespace TabbedAppXamarin.ViewModels.Images
         public ImageViewModel(ImageSource source)
         {
             Source = source;
-            //EditCommand = new Command(EditImage);
+            EditCommand = new Command(EditImage);
             SaveCommand = new Command(SaveImage);
             RemoveCommand = new Command(RemoveImage);
         }

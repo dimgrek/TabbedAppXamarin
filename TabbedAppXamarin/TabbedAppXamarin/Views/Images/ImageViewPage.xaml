@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:TabbedAppXamarin.Controls;assembly=TabbedAppXamarin"
              x:Class="TabbedAppXamarin.Views.Images.ImageViewPage">
-  <!--<StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-    <ScrollView>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Edit" Command="{Binding EditCommand}"/>
+  </ContentPage.ToolbarItems>
+    <controls:CustomScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
     <Image Source="{Binding Source}" />
-    </ScrollView>
-    <Button Text="Edit" Command="{Binding EditCommand}"/>
-  </StackLayout>-->
+    </controls:CustomScrollView>
 </ContentPage>

@@ -10,7 +10,6 @@
       <behaviors:Interaction.Behaviors>
         <behaviors:BehaviorCollection>
           <behaviors1:SearchBarTextChanged Command="{Binding SearchTextChanged}"/>
-          <!--b:EventToCommand EventName="TextChanged" Command="{Binding SearchTextChanged}" CommandParameter="{Binding Text, Source={x:Reference search}}"/-->
         </behaviors:BehaviorCollection>
       </behaviors:Interaction.Behaviors>
     </SearchBar>
@@ -22,12 +21,7 @@
       <ListView.ItemTemplate>
         <DataTemplate>
           <TextCell Text="{Binding Name}" TextColor="Black">
-            <!--behaviors:Interaction.Behaviors>
-              <behaviors:BehaviorCollection>
-                <behaviors:EventToCommand EventName="Tapped" Command="{Binding ContactSelectedCommand}" CommandParameter="{Binding}"/>
-              </behaviors:BehaviorCollection>
-            </behaviors:Interaction.Behaviors>-->
-          </TextCell>
+            </TextCell>
         </DataTemplate>
       </ListView.ItemTemplate>
       </ListView>

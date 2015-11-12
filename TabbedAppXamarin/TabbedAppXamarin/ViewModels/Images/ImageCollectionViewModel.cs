@@ -12,7 +12,6 @@ namespace TabbedAppXamarin.ViewModels.Images
     {
         private string _imagePath;
         private ImageService _is;
-        private ImageViewModel _preloader;
 
         public ImageCollectionViewModel()
         {
@@ -26,6 +25,7 @@ namespace TabbedAppXamarin.ViewModels.Images
         public ICommand RefreshCommand { get; private set; }
         public ICommand OnSelectionCommand { get; private set; }
         public ObservableCollection<ImageViewModel> Images { get; set; }
+        public event EventHandler<ImageSelectedEventArgs> ItemSelected;
 
         private void AddImage(int imageNumber)
         {
@@ -33,12 +33,10 @@ namespace TabbedAppXamarin.ViewModels.Images
             Images.Add(new ImageViewModel(ImageSource.FromFile(_imagePath)));
         }
 
-        public event EventHandler<ImageSelectedEventArgs> ItemSelected;
 
         private async void ShowPreloaders()
         {
-            //todo: scale to 50 images
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i < 49; i++)
             {
                 Images.Add(new ImageViewModel(ImageSource.FromFile("preloader.gif")));
                 _imagePath = await _is.SaveImageLocally(i);

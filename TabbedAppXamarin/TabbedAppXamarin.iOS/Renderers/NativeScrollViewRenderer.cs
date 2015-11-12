@@ -30,15 +30,10 @@ namespace TabbedAppXamarin.iOS.Renderers
                 CreateRotationGestureRecognizer();
                 CreatePanGestureRecognizer();
                 CreatePinchGestureRecognizer();
-
-                //MaximumZoomScale = 4f;
-                //MinimumZoomScale = 0.5f;
-                //ViewForZoomingInScrollView += (UIScrollView sv) => Subviews[0];
-
+                
                 Subviews[0].AddGestureRecognizer(panGesture);
                 Subviews[0].AddGestureRecognizer(rotateGesture);
                 Subviews[0].AddGestureRecognizer(pinchGesture);
-
             }
         }
 
