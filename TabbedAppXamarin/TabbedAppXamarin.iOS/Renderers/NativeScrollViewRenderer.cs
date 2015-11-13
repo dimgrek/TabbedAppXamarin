@@ -30,7 +30,6 @@ namespace TabbedAppXamarin.iOS.Renderers
                 CreateRotationGestureRecognizer();
                 CreatePanGestureRecognizer();
                 CreatePinchGestureRecognizer();
-                
                 Subviews[0].AddGestureRecognizer(panGesture);
                 Subviews[0].AddGestureRecognizer(rotateGesture);
                 Subviews[0].AddGestureRecognizer(pinchGesture);
@@ -53,7 +52,6 @@ namespace TabbedAppXamarin.iOS.Renderers
 
         private void CreatePanGestureRecognizer()
         {
-
             panGesture = new UIPanGestureRecognizer(() =>
             {
                 if ((panGesture.State == UIGestureRecognizerState.Began || panGesture.State == UIGestureRecognizerState.Changed) && (panGesture.NumberOfTouches == 1))

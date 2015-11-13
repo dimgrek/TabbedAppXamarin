@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using FFImageLoading.Transformations;
 using TabbedAppXamarin.Services.Networking;
 using Xamarin.Forms;
 
@@ -18,6 +19,7 @@ namespace TabbedAppXamarin.Services.Images
             _di = DependencyService.Get<ISaveImageService>();
         }
 
+
         public async Task<string> SaveImageLocally(int imageNumber)
         {
             var uri = ImageURL + ImageWidth + ImageHeight;
@@ -29,6 +31,16 @@ namespace TabbedAppXamarin.Services.Images
         public void SaveImageToGallery(string file)
         {
             _di.SaveImageToGallery(file);
+        }
+
+        public byte[] FlipImage(FlipType type, string file)
+        {
+            return _di.TransformImage(type, file);
+        }
+
+        public string ShowLocalFileName()
+        {
+            return _di.ShowLocalFileName();
         }
     }
 }

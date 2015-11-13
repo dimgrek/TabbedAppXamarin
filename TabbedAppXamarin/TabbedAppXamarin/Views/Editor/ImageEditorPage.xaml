@@ -1,6 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:TabbedAppXamarin.Controls;assembly=TabbedAppXamarin"
              x:Class="TabbedAppXamarin.Views.ImageEditorPage">
-  <Label Text="Hello Image Editor Page" VerticalOptions="Center" HorizontalOptions="Center" />
+  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Button Grid.Row="0" Grid.Column="0" Text="Rotate" Command="{Binding RotateCommand}"/>
+      <Button Grid.Row="0" Grid.Column="1" Text="Flip Hor" Command="{Binding FlipHorCommand}"/>
+      <Button Grid.Row="0" Grid.Column="2" Text="Flip Vert" Command="{Binding FlipVertCommand}"/>
+    </Grid>
+    <Image x:Name="image" Source="{Binding Source}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+    <!--<Image x:Name="image1" Source="{Binding Source1}" />-->
+  </StackLayout>
 </ContentPage>
