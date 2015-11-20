@@ -12,8 +12,7 @@ namespace TabbedAppXamarin.ViewModels.Editor
 {
     public class ImageEditorViewModel: INotifyPropertyChanged
     {
-        private string _imagePath;
-        private ImageService _is;
+		private ImageService _is;
         private ImageSource _source;
         private ImageSource _source1;
 
