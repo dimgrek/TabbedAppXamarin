@@ -93,6 +93,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="New Feature\NewFeatureClass.cs" />
+    <Compile Include="New Feature\OneMoreFeature.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Mobile">
