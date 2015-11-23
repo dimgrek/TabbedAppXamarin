@@ -15,7 +15,6 @@ namespace TabbedAppXamarin.iOS.Renderers
     {
         private nfloat dx = 0;
         private nfloat dy = 0;
-        private UIImageView imageView;
         private UIPanGestureRecognizer panGesture;
         private UIPinchGestureRecognizer pinchGesture;
         private nfloat r = 0;

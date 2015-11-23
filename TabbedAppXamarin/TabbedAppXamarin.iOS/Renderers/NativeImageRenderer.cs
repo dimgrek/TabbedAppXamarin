@@ -14,7 +14,6 @@ namespace TabbedAppXamarin.iOS.Renderers
     {
         private UIImage _image;
         private UIImageView _imageView;
-        private FlipType flipType;
 
         protected override void OnElementChanged(ElementChangedEventArgs<Image> e)
         {

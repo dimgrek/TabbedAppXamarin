@@ -6,8 +6,7 @@ namespace TabbedAppXamarin.Views
 {
     public partial class ImageEditorPage : ContentPage
     {
-        private Button _rotateBtn;
-        private StackLayout _stack;
+        
         private ImageEditorViewModel _vm;
 
 

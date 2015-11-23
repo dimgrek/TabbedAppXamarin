@@ -14,12 +14,7 @@ namespace TabbedAppXamarin.iOS
     [Register("AppDelegate")]
     public class AppDelegate : XFormsApplicationDelegate
     {
-        private UIWindow window;
-
-        public UIWindow Window
-        {
-            get { return window; }
-        }
+        
 
         //
         // This method is invoked when the application has loaded and is ready to run. In this 

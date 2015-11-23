@@ -32,7 +32,6 @@ namespace TabbedAppXamarin.iOS.Services.Images
         {
             var someImage = UIImage.FromFile(file);
             someImage.SaveToPhotosAlbum((image, error) => {
-                var o = image;
                 Console.WriteLine("error:" + error);
             });
         }
@@ -64,7 +63,6 @@ namespace TabbedAppXamarin.iOS.Services.Images
         public void SaveUiImageToGallery(UIImage source)
         {
             source.SaveToPhotosAlbum((image, error) => {
-                var o = image;
                 Console.WriteLine("error:" + error);
             });
         }
