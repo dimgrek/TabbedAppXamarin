@@ -6,6 +6,7 @@ namespace TabbedAppXamarin
 	{
 		public NewFeatureClass ()
 		{
+			//added some functions, methods and props.
 		}
 	}
 }
